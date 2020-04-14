@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: 882474717}
   - component: {fileID: 882474713}
   - component: {fileID: 2067742417}
+  - component: {fileID: 1694847166}
   m_Layer: 0
   m_Name: MainPlayer
   m_TagString: Player
@@ -291,3 +292,20 @@ MonoBehaviour:
   _rightForce: 25
   rotationSpeed: 10
   _playerBoost: 0
+  _startPoint: {fileID: 0}
+--- !u!114 &1694847166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7253954962549835897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c9b7e51add26b841bb1f930079780ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthValue: 100
+  health_Slider: {fileID: 0}
+  _healthText: {fileID: 0}
+  UI_Holder: {fileID: 0}

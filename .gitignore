@@ -34,3 +34,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Assets/SlimUI/Fonts/DOSIS-EXTRALIGHT.asset
+Assets/SlimUI/Fonts/DOSIS-EXTRALIGHT.asset.meta
+Assets/SlimUI/Fonts/DOSIS-MEDIUM.asset
+Assets/SlimUI/Fonts/DOSIS-MEDIUM.asset.meta
