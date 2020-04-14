@@ -16,7 +16,7 @@ public class ObstacleScript : MonoBehaviour
     void Start()
     {
         StartCoroutine("GenerateObstacles");
-        halfGroundSize = 420f;
+        halfGroundSize = 200f;
     }
 
     // Update is called once per frame
@@ -26,9 +26,9 @@ public class ObstacleScript : MonoBehaviour
     }
     IEnumerator GenerateObstacles()
     {
-        float timer = Random.Range(min_ObstacleDelay, max_ObstacleDelay) / 300f;
+        float timer = Random.Range(min_ObstacleDelay, max_ObstacleDelay) / 1000f;
         yield return new WaitForSeconds(timer);
-        CreateObstacles(_player.transform.position.z + halfGroundSize);
+        CreateObstacles(Random.Range((_player.transform.position.z + halfGroundSize),(_player.transform.position.z + halfGroundSize)*2));
         StartCoroutine("GenerateObstacles");
     }
     void CreateObstacles(float zPos)

@@ -270,6 +270,9 @@ MonoBehaviour:
   max_X: 44
   min_y: 0
   max_y: 25
+  needToMove: 0
+  hasMoved: 0
+  _player: {fileID: 7253954962549835897, guid: e6c5edaedafccec49ba206938c0683d4, type: 3}
 --- !u!54 &-302719064034662050
 Rigidbody:
   m_ObjectHideFlags: 0

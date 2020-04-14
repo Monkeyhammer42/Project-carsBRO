@@ -9,10 +9,12 @@ public class ObstacleDamage : MonoBehaviour
     public float min_X, max_X;
     public float min_y, max_y;
     public bool needToMove;
-    public bool hasMoved; 
+    public bool hasMoved;
+    private GameObject _player;
         void Start()
     {
         myBody = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
@@ -20,6 +22,8 @@ public class ObstacleDamage : MonoBehaviour
     {
         AiMove();
         MovementBounds();
+        RandTimer();
+        
     }
     private void OnTriggerEnter(Collider target)
     {
@@ -32,13 +36,13 @@ public class ObstacleDamage : MonoBehaviour
         else
         {
             needToMove = true;
-           // this.gameObject.SetActive(false);
+           
         }
     }
     private void RandTimer()
     {
-        int random = Random.Range(0, 8);
-        if (random == 3||random==7||random==2)
+        int random = Random.Range(0, 2000);
+        if (random == 3)
         {
             needToMove = true;
         }
@@ -109,6 +113,11 @@ public class ObstacleDamage : MonoBehaviour
            
         }
         transform.position = temp;
+        if(temp.z< GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position.z)
+        {
+            StartCoroutine(DeactivateTime());
+        }
+        
 
     }
     IEnumerator WaitForMove()
@@ -116,5 +125,9 @@ public class ObstacleDamage : MonoBehaviour
         yield return new WaitForSeconds(2f);
         myBody.velocity = new Vector3(0f, 0f, myBody.velocity.z);
     }
-
+    IEnumerator DeactivateTime()
+    {
+        yield return new WaitForSeconds(0.5f);
+        this.gameObject.SetActive(false);
+    }
 }
