@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - PowerUp
+  - OBJ
   layers:
   - Default
   - TransparentFX

@@ -145,12 +145,12 @@ public class MainMovementScript : MonoBehaviour
     public void PlayerBoost()
     {
         _playerBoost = true;
-        myBody.velocity = new Vector3(myBody.velocity.x, myBody.velocity.y, 1000f);
+        myBody.velocity = new Vector3(myBody.velocity.x, myBody.velocity.y, 200f);
         StartCoroutine(StopPlayerBoost());
     }
     public IEnumerator StopPlayerBoost()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(3f);
         myBody.velocity = new Vector3(myBody.velocity.x, myBody.velocity.y, 40f);
         _playerBoost = false;
 
