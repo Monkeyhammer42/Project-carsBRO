@@ -13,25 +13,23 @@ public class MainMovementScript : MonoBehaviour
     public float rotationSpeed;
     public bool _playerBoost;
     public Transform _startPoint;
-    private void Awake()
-    {
+    public bool _gameStarted;
+    
 
-        myBody.position = new Vector3(_startPoint.position.x, _startPoint.position.y, _startPoint.position.z);
-    }
     void Start()
     {
         myBody = GetComponent<Rigidbody>();
     }
-
-    // Update is called once per frame
     
     void Update()
     {
-        Move();
-        MovementBounds();
-        ChangeRotation();
-        
+        if (_gameStarted) {
+            
+            Move();
+            MovementBounds();
+            ChangeRotation();
 
+        }
 
     }
     
@@ -154,5 +152,11 @@ public class MainMovementScript : MonoBehaviour
         myBody.velocity = new Vector3(myBody.velocity.x, myBody.velocity.y, 40f);
         _playerBoost = false;
 
+    }
+    public void StartGame()
+    {
+        myBody.position = new Vector3(_startPoint.position.x, _startPoint.position.y, _startPoint.position.z);
+        _gameStarted = true;
+       
     }
 }

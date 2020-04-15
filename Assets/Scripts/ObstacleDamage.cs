@@ -11,6 +11,7 @@ public class ObstacleDamage : MonoBehaviour
     public bool needToMove;
     public bool hasMoved;
     private GameObject _player;
+    private bool GamePaused;
         void Start()
     {
         myBody = GetComponent<Rigidbody>();
@@ -20,9 +21,10 @@ public class ObstacleDamage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AiMove();
-        MovementBounds();
-        RandTimer();
+        
+            AiMove();
+            MovementBounds();
+            RandTimer();
         
     }
     private void OnTriggerEnter(Collider target)
@@ -31,7 +33,8 @@ public class ObstacleDamage : MonoBehaviour
         {
             target.GetComponent<PlayerHealthScrpit>().ApplyDamage(_individualDmage);
             
-            this.gameObject.SetActive(false);
+            
+            Destroy(this.gameObject);
         }
         else
         {
@@ -128,6 +131,7 @@ public class ObstacleDamage : MonoBehaviour
     IEnumerator DeactivateTime()
     {
         yield return new WaitForSeconds(0.5f);
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
+        Destroy(this.gameObject);
     }
 }

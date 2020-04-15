@@ -46,6 +46,7 @@ public class PlayerHealthScrpit : MonoBehaviour
             if (healthValue == 0)
             {
                 UI_Holder.SetActive(true);
+            Time.timeScale = 0.000001f;
           //  Instantiate(_taxiPeices[(0- _taxiPeices.Length)], player);
             }
         

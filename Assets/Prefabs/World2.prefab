@@ -52888,7 +52888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherBlock: {fileID: 0}
-  halfLength: 220
+  halfLength: 230
   endOffset: 200
 --- !u!1 &570984243265170439
 GameObject:
