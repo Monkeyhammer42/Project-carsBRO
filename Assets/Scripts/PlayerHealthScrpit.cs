@@ -12,6 +12,7 @@ public class PlayerHealthScrpit : MonoBehaviour
     //private bool canDamage;
     public Rigidbody[] _taxiPeices ;
     public GameObject UI_Holder;
+    public GameObject UiButton;
     private Transform player;
 
     void Start()
@@ -46,6 +47,7 @@ public class PlayerHealthScrpit : MonoBehaviour
             if (healthValue == 0)
             {
                 UI_Holder.SetActive(true);
+            UiButton.SetActive(false);
             Time.timeScale = 0.000001f;
           //  Instantiate(_taxiPeices[(0- _taxiPeices.Length)], player);
             }

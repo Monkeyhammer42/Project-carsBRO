@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManagment : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Transform _player;
+    public Transform _startPoint;
+    public float distance;
     void Start()
     {
         
@@ -14,12 +17,16 @@ public class GameManagment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        MeasureDistance();
     }
 
     public void RestartGame()
     {
         SceneManager.LoadScene("MainScene");
+    }
+    public void Quit()
+    {
+        Application.Quit();
     }
     public void Pause()
     {
@@ -28,5 +35,10 @@ public class GameManagment : MonoBehaviour
     public void UnPause()
     {
         Time.timeScale = 1f;
+    }
+    public void MeasureDistance()
+    {
+        distance= _startPoint.position.z + _player.position.z;
+        
     }
 }

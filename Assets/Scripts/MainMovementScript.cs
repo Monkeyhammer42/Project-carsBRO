@@ -18,6 +18,7 @@ public class MainMovementScript : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
         myBody = GetComponent<Rigidbody>();
     }
     
