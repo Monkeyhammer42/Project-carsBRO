@@ -14,7 +14,7 @@ public class MainMovementScript : MonoBehaviour
     public bool _playerBoost;
     public Transform _startPoint;
     public bool _gameStarted;
-    
+    public float time;
 
     void Start()
     {
@@ -158,6 +158,8 @@ public class MainMovementScript : MonoBehaviour
     {
         myBody.position = new Vector3(_startPoint.position.x, _startPoint.position.y, _startPoint.position.z);
         _gameStarted = true;
-       
+
+
     }
+    
 }

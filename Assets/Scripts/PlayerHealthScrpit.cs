@@ -14,7 +14,11 @@ public class PlayerHealthScrpit : MonoBehaviour
     public GameObject UI_Holder;
     public GameObject UiButton;
     private Transform player;
-
+    public Text _distanceText;
+    public Text _TimerText;
+    public float time;
+    public bool isTimer;
+    public string timer;
     void Start()
     {
 
@@ -27,6 +31,11 @@ public class PlayerHealthScrpit : MonoBehaviour
     {
         _healthText.text = "Health : " + healthValue;
         health_Slider.value = healthValue;
+        if (isTimer)
+        {
+            Timer();
+            _TimerText.text = time.ToString("0.0");
+        }
     }
 
     public void ApplyDamage(int damageAmount)
@@ -46,11 +55,22 @@ public class PlayerHealthScrpit : MonoBehaviour
             health_Slider.value = healthValue;
             if (healthValue == 0)
             {
+            
                 UI_Holder.SetActive(true);
             UiButton.SetActive(false);
             Time.timeScale = 0.000001f;
           //  Instantiate(_taxiPeices[(0- _taxiPeices.Length)], player);
             }
         
+    }
+    public void MeasureTime()
+    {
+        isTimer =true;
+    }
+    public void Timer()
+    {
+        
+        time += Time.timeScale/60;
+       
     }
 }

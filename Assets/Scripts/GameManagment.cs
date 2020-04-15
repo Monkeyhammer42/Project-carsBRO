@@ -9,6 +9,8 @@ public class GameManagment : MonoBehaviour
     public Transform _player;
     public Transform _startPoint;
     public float distance;
+    public float time;
+    public Text _distanceText;
     void Start()
     {
         
@@ -39,6 +41,7 @@ public class GameManagment : MonoBehaviour
     public void MeasureDistance()
     {
         distance= _startPoint.position.z + _player.position.z;
-        
+        _distanceText.text = distance.ToString("0")+ "M";
     }
+    
 }
