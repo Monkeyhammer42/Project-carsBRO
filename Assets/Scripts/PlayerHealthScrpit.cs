@@ -14,11 +14,19 @@ public class PlayerHealthScrpit : MonoBehaviour
     public GameObject UI_Holder;
     public GameObject UiButton;
     private Transform player;
-    public Text _distanceText;
+    
     public Text _TimerText;
     public float time;
     public bool isTimer;
     public string timer;
+    public Text _deadTimer;
+    public Text _deadDist;
+
+    public Transform _player;
+    public Transform _startPoint;
+    public float distance;
+    public float timex;
+    public Text _distanceText;
     void Start()
     {
 
@@ -34,8 +42,9 @@ public class PlayerHealthScrpit : MonoBehaviour
         if (isTimer)
         {
             Timer();
-            _TimerText.text = time.ToString("0.0");
+            _TimerText.text = time.ToString("0"+"s");
         }
+        MeasureDistance();
     }
 
     public void ApplyDamage(int damageAmount)
@@ -55,8 +64,9 @@ public class PlayerHealthScrpit : MonoBehaviour
             health_Slider.value = healthValue;
             if (healthValue == 0)
             {
-            
-                UI_Holder.SetActive(true);
+            _deadTimer.text = time.ToString("0") + "s";
+            _deadDist.text=distance.ToString("0.00") + "KM";
+            UI_Holder.SetActive(true);
             UiButton.SetActive(false);
             Time.timeScale = 0.000001f;
           //  Instantiate(_taxiPeices[(0- _taxiPeices.Length)], player);
@@ -72,5 +82,10 @@ public class PlayerHealthScrpit : MonoBehaviour
         
         time += Time.timeScale/60;
        
+    }
+    public void MeasureDistance()
+    {
+        distance = (_startPoint.position.z + _player.position.z) / 1000;
+        _distanceText.text = distance.ToString("0.00") + "KM";
     }
 }
