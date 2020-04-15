@@ -14,7 +14,7 @@ public class MainMovementScript : MonoBehaviour
     public bool _playerBoost;
     public Transform _startPoint;
     public bool _gameStarted;
-    public float time;
+  
 
     void Start()
     {

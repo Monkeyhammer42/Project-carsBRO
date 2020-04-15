@@ -293,6 +293,8 @@ MonoBehaviour:
   rotationSpeed: 10
   _playerBoost: 0
   _startPoint: {fileID: 0}
+  _gameStarted: 0
+  time: 0
 --- !u!114 &1694847166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,4 +310,21 @@ MonoBehaviour:
   healthValue: 100
   health_Slider: {fileID: 0}
   _healthText: {fileID: 0}
+  _taxiPeices:
+  - {fileID: 9152242765516722686, guid: 12ddccbd8e7de784896377857ab841b8, type: 3}
+  - {fileID: 6598574514359087510, guid: 34bb3f6212201a842a6696f7781813bd, type: 3}
+  - {fileID: 6860385538848945899, guid: c772cb229744a2e4fa07646aa570f993, type: 3}
+  - {fileID: 4466524575980087597, guid: 8a6f14c3df8fc494fbe2d7b8459aafc7, type: 3}
   UI_Holder: {fileID: 0}
+  UiButton: {fileID: 0}
+  _TimerText: {fileID: 0}
+  time: 0
+  isTimer: 0
+  timer: 
+  _deadTimer: {fileID: 0}
+  _deadDist: {fileID: 0}
+  _player: {fileID: 7250935792730860783}
+  _startPoint: {fileID: 0}
+  distance: 0
+  timex: 0
+  _distanceText: {fileID: 0}
