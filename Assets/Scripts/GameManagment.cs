@@ -118,7 +118,7 @@ public class GameManagment : MonoBehaviour
         if (timer >= 0)
         {
             timer -= Time.deltaTime;
-            Debug.Log(timer);
+
             Uitext.text = timer.ToString("0") + "s";
         }
         else { timer = 10; }
