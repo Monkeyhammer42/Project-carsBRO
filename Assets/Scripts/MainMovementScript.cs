@@ -25,7 +25,7 @@ public class MainMovementScript : MonoBehaviour
     void Update()
     {
         if (_gameStarted) {
-            
+           
             Move();
             MovementBounds();
             ChangeRotation();
@@ -43,7 +43,7 @@ public class MainMovementScript : MonoBehaviour
         }
         if (!_playerBoost)
         {
-            myBody.velocity = new Vector3(myBody.velocity.x, myBody.velocity.y, 40f);
+            myBody.velocity = new Vector3(myBody.velocity.x, myBody.velocity.y, 100f);
            
         }
         if (Input.GetKey(KeyCode.W))
@@ -149,8 +149,8 @@ public class MainMovementScript : MonoBehaviour
     }
     public IEnumerator StopPlayerBoost()
     {
-        yield return new WaitForSeconds(3f);
-        myBody.velocity = new Vector3(myBody.velocity.x, myBody.velocity.y, 40f);
+        yield return new WaitForSeconds(3.5f);
+        myBody.velocity = new Vector3(myBody.velocity.x, myBody.velocity.y, 100f);
         _playerBoost = false;
 
     }

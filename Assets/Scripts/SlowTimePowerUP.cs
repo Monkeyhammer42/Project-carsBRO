@@ -19,13 +19,14 @@ public class SlowTimePowerUP : MonoBehaviour
     {
         if (target.gameObject.tag == "Player")
         {
-            Time.timeScale = 0.5f;
+            Time.timeScale = 0.75f;
             StartCoroutine(SlowTimeAndDelete());
 
 
         }
 
     }
+    
     public IEnumerator SlowTimeAndDelete()
     {
         yield return new WaitForSecondsRealtime(7);

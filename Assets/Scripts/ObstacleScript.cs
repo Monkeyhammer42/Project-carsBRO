@@ -40,7 +40,7 @@ public class ObstacleScript : MonoBehaviour
     {
         float timer = Random.Range(min_ObstacleDelay, max_ObstacleDelay) / 1000f;
         yield return new WaitForSeconds(timer);
-        CreateObstacles(Random.Range((_player.transform.position.z + halfGroundSize),(_player.transform.position.z + halfGroundSize)*2));
+        CreateObstacles(Random.Range((_player.transform.position.z + halfGroundSize),(_player.transform.position.z + halfGroundSize)*5));
         CreatePavementObstacles(Random.Range((_player.transform.position.z + halfGroundSize), (_player.transform.position.z + halfGroundSize) *20));
         StartCoroutine("GenerateObstacles");
     }
