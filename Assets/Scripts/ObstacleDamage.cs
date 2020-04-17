@@ -12,7 +12,10 @@ public class ObstacleDamage : MonoBehaviour
     public bool hasMoved;
     private GameObject _player;
     private bool GamePaused;
-        void Start()
+    public ParticleSystem ExplosionFX;
+    public Transform EXP;
+    private bool hasDamaged;
+    void Start()
     {
         myBody = GetComponent<Rigidbody>();
 
@@ -29,17 +32,21 @@ public class ObstacleDamage : MonoBehaviour
     }
     private void OnTriggerEnter(Collider target)
     {
-        if (target.gameObject.tag == "Player")
+        if (!hasDamaged)
         {
-            target.GetComponent<PlayerHealthScrpit>().ApplyDamage(_individualDmage);
-            
-            
-            Destroy(this.gameObject);
+            if (target.gameObject.tag == "Player")
+            {
+                target.GetComponent<PlayerHealthScrpit>().ApplyDamage(_individualDmage);
+                hasDamaged=true;
+                ExplosionFX.Play();
+                
+                DeactivateTime();
+            }
         }
         else
         {
             needToMove = true;
-           
+
         }
     }
     private void RandTimer()
@@ -131,7 +138,7 @@ public class ObstacleDamage : MonoBehaviour
     IEnumerator DeactivateTime()
     {
         yield return new WaitForSeconds(0.5f);
-        //this.gameObject.SetActive(false);
+        
         Destroy(this.gameObject);
     }
 }

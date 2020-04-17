@@ -14,6 +14,7 @@ public class PlayerHealthScrpit : MonoBehaviour
     public GameObject UI_Holder;
     public GameObject UiButton;
     private Transform player;
+    public GameObject TimeButton;
     
     public Text _TimerText;
     public float time;
@@ -68,6 +69,8 @@ public class PlayerHealthScrpit : MonoBehaviour
             _deadDist.text=distance.ToString("0.00") + "KM";
             UI_Holder.SetActive(true);
             UiButton.SetActive(false);
+            TimeButton.SetActive(false);
+
             Time.timeScale = 0.000001f;
           //  Instantiate(_taxiPeices[(0- _taxiPeices.Length)], player);
             }

@@ -15,6 +15,8 @@ public class GameManagment : MonoBehaviour
     public bool _timeSlowed;
     public float timer =10;
     public Text Uitext;
+    public GameObject GreenReady;
+    public GameObject RedNotReady;
     void Start()
     {
         halfGroundSize = 80f;
@@ -102,6 +104,9 @@ public class GameManagment : MonoBehaviour
         Time.timeScale = 1f;
         _timeSlowed = true;
         
+        
+            
+        
         StartCoroutine(SlowTimeTimer());
 
 
@@ -120,8 +125,18 @@ public class GameManagment : MonoBehaviour
             timer -= Time.deltaTime;
 
             Uitext.text = timer.ToString("0") + "s";
+            if (timer < 0.005f)
+            {
+                RedNotReady.SetActive(false);
+                GreenReady.SetActive(true);
+
+            }
         }
-        else { timer = 10; }
+        
+        else
+        {
+            timer = 10;
+        }
     }
     public void StartedGamePowerUps()
     {
@@ -140,6 +155,11 @@ public class GameManagment : MonoBehaviour
             SpawnBoost();
         }
         StartCoroutine(SpawnPowerUps());
+    }
+    public void TurnOffGreen()
+    {
+        GreenReady.SetActive(false);
+        RedNotReady.SetActive(true);
     }
 }
 

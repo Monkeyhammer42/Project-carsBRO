@@ -115,7 +115,7 @@ public class ObstacleScript : MonoBehaviour
 
                 break;
             case 2:
-                obstacle.transform.rotation = Quaternion.Euler(0f, mirror ? -1 : 1, 0f);
+                obstacle.transform.rotation = Quaternion.Euler(0f, mirror ? -90 : 90, 0f);
 
                 break;
             case 3:

@@ -5,7 +5,8 @@ using UnityEngine;
 public class PavementOBJScript : MonoBehaviour
 {
     public int _individualDmage;
-    
+    public ParticleSystem ExplosionFX;
+    public Transform EXP;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,16 +20,19 @@ public class PavementOBJScript : MonoBehaviour
     }
     private void OnTriggerEnter(Collider target)
     {
+       
         if (target.gameObject.tag == "Player")
         {
             target.GetComponent<PlayerHealthScrpit>().ApplyDamage(_individualDmage);
 
-            
-            Destroy(this.gameObject);
+           ExplosionFX.Play();
+            StartCoroutine(DeactivateTime());
+
         }
         else
         {
-            Destroy(this.gameObject);
+            ExplosionFX.Play();
+            StartCoroutine(DeactivateTime());
         }
         
     }
