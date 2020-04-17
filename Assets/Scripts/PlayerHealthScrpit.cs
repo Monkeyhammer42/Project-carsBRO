@@ -65,16 +65,21 @@ public class PlayerHealthScrpit : MonoBehaviour
             health_Slider.value = healthValue;
             if (healthValue == 0)
             {
-            _deadTimer.text = time.ToString("0") + "s";
-            _deadDist.text=distance.ToString("0.00") + "KM";
-            UI_Holder.SetActive(true);
-            UiButton.SetActive(false);
-            TimeButton.SetActive(false);
-
-            Time.timeScale = 0.000001f;
+            StartCoroutine(Dead());
           //  Instantiate(_taxiPeices[(0- _taxiPeices.Length)], player);
             }
         
+    }
+    public IEnumerator Dead()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _deadTimer.text = time.ToString("0") + "s";
+        _deadDist.text = distance.ToString("0.00") + "KM";
+        UI_Holder.SetActive(true);
+        UiButton.SetActive(false);
+        TimeButton.SetActive(false);
+
+        Time.timeScale = 0.000001f;
     }
     public void MeasureTime()
     {

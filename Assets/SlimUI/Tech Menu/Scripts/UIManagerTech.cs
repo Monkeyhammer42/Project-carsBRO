@@ -226,8 +226,8 @@ public class UIManagerTech : MonoBehaviour
 		speakersIndex = speakersDefault;
 		subtitleLanguageIndex = subtitleLanguageDefault;
 
-		textSpeakers.text = speakers[speakersDefault];
-		textSubtitleLanguage.text = subtitleLanguage[subtitleLanguageDefault];
+
+
 	}
 
 	public void IncreaseIndex(int i){

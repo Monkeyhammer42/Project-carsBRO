@@ -17,6 +17,13 @@ public class GameManagment : MonoBehaviour
     public Text Uitext;
     public GameObject GreenReady;
     public GameObject RedNotReady;
+    public Slider TimeDilation;
+    public GameObject BigGreen;
+    private void Awake()
+    {
+
+       
+    }
     void Start()
     {
         halfGroundSize = 80f;
@@ -94,7 +101,12 @@ public class GameManagment : MonoBehaviour
         {
 
             Time.timeScale = 0.5f;
+
             StartCoroutine(SlowTimeNow());
+            
+               
+
+            
         }
         
     }
@@ -102,6 +114,7 @@ public class GameManagment : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(7);
         Time.timeScale = 1f;
+        
         _timeSlowed = true;
         
         
@@ -116,7 +129,9 @@ public class GameManagment : MonoBehaviour
         yield return new WaitForSeconds(10);
         
             _timeSlowed = false;
-        
+        UION();
+
+
     }
     public void Timer()
     {
@@ -125,12 +140,8 @@ public class GameManagment : MonoBehaviour
             timer -= Time.deltaTime;
 
             Uitext.text = timer.ToString("0") + "s";
-            if (timer < 0.005f)
-            {
-                RedNotReady.SetActive(false);
-                GreenReady.SetActive(true);
-
-            }
+            TimeDilation.value = timer;
+            
         }
         
         else
@@ -160,6 +171,16 @@ public class GameManagment : MonoBehaviour
     {
         GreenReady.SetActive(false);
         RedNotReady.SetActive(true);
+    }
+    public void TurnOffBigGReen()
+    {
+        BigGreen.SetActive(false);
+    }
+    public void UION()
+    {
+        RedNotReady.SetActive(false);
+        GreenReady.SetActive(true);
+        BigGreen.SetActive(true);
     }
 }
 
