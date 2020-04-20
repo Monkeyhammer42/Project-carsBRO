@@ -45,7 +45,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 4.09
+  m_Radius: 5.12
   m_Center: {x: -8.66, y: 0, z: 0}
 --- !u!198 &7862914961940740550
 ParticleSystem:

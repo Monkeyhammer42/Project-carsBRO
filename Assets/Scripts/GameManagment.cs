@@ -19,6 +19,7 @@ public class GameManagment : MonoBehaviour
     public GameObject RedNotReady;
     public Slider TimeDilation;
     public GameObject BigGreen;
+    public GameObject menubutton;
     private void Awake()
     {
 
@@ -84,22 +85,22 @@ public class GameManagment : MonoBehaviour
     }
     void CreatePowerBoosts(float zPos)
     {
-        AddPowerBoost(new Vector3(_powerUpLanes[Random.Range(0, _powerUpLanes.Length)].transform.position.x, _powerUpLanes[Random.Range(0, _powerUpLanes.Length)].transform.position.y, zPos));
+        AddPowerBoost(new Vector3(_powerUpLanes[Random.Range(0, _powerUpLanes.Length)].transform.position.x, _powerUpLanes[Random.Range(0, _powerUpLanes.Length)].transform.position.y +0.5f, zPos));
     }
     void CreateTimeBoost(float zPos)
     {
-        AddTimeBoost(new Vector3(_powerUpLanes[Random.Range(0, _powerUpLanes.Length)].transform.position.x, _powerUpLanes[Random.Range(0, _powerUpLanes.Length)].transform.position.y, zPos));
+        AddTimeBoost(new Vector3(_powerUpLanes[Random.Range(0, _powerUpLanes.Length)].transform.position.x, _powerUpLanes[Random.Range(0, _powerUpLanes.Length)].transform.position.y + 0.5f, zPos));
     }
     void CreateHealthBoost(float zPos)
     {
-        AddHealthBoost(new Vector3(_powerUpLanes[Random.Range(0, _powerUpLanes.Length)].transform.position.x, _powerUpLanes[Random.Range(0, _powerUpLanes.Length)].transform.position.y, zPos));
+        AddHealthBoost(new Vector3(_powerUpLanes[Random.Range(0, _powerUpLanes.Length)].transform.position.x, _powerUpLanes[Random.Range(0, _powerUpLanes.Length)].transform.position.y + 0.5f, zPos));
 
     }
     public void SlowTime()
     {
         if (!_timeSlowed)
         {
-
+            
             Time.timeScale = 0.5f;
 
             StartCoroutine(SlowTimeNow());
@@ -155,7 +156,7 @@ public class GameManagment : MonoBehaviour
     }
     public IEnumerator SpawnPowerUps()
     {
-        yield return new WaitForSecondsRealtime(10);
+        yield return new WaitForSecondsRealtime(7.5f);
         float temp = Random.Range(0, 2);
         if (temp == 0)
         {
@@ -171,6 +172,7 @@ public class GameManagment : MonoBehaviour
     {
         GreenReady.SetActive(false);
         RedNotReady.SetActive(true);
+        menubutton.SetActive(false);
     }
     public void TurnOffBigGReen()
     {
@@ -178,6 +180,7 @@ public class GameManagment : MonoBehaviour
     }
     public void UION()
     {
+        menubutton.SetActive(true);
         RedNotReady.SetActive(false);
         GreenReady.SetActive(true);
         BigGreen.SetActive(true);

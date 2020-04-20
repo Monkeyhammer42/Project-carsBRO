@@ -71,4 +71,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  halfGroundSize: 80
+  halfGroundSize: 100
+  _timeSlowed: 0
+  timer: 10
+  Uitext: {fileID: 0}
+  GreenReady: {fileID: 0}
+  RedNotReady: {fileID: 0}
+  TimeDilation: {fileID: 0}
+  BigGreen: {fileID: 0}
+  menubutton: {fileID: 0}

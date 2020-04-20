@@ -134,6 +134,7 @@ public class ObstacleDamage : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         myBody.velocity = new Vector3(0f, 0f, myBody.velocity.z);
+        needToMove = false;
     }
     IEnumerator DeactivateTime()
     {
