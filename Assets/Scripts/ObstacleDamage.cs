@@ -141,7 +141,7 @@ public class ObstacleDamage : MonoBehaviour
     }
     IEnumerator DeactivateTime()
     {
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(1.5f);
         
         Destroy(this.gameObject);
     }

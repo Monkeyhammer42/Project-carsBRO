@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10389a0a0f5c8b841b326a331e1f00ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _individualDmage: 10
+  _individualDmage: 5
   ExplosionFX: {fileID: 1651472997687237427}
   EXP: {fileID: 3120362992175361189}
   ExplosionSound: {fileID: 1232564991433019131}
@@ -123,9 +123,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 74e3bd7fb4ca4874f9ec1af8347cb904, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d4136989ac1d0424ba1bdc613555cd96, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.626
+  m_Volume: 0.232
   m_Pitch: 1
   Loop: 0
   Mute: 0

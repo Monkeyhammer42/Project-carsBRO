@@ -136,7 +136,7 @@ SubShader {
 
 			scale /= 1 + (_OutlineSoftness * _ScaleRatioA * scale);
 			float bias = (0.5 - weight) * scale - 0.5;
-			float outline = _OutlineWidth * _ScaleRatioA * 0.5 * scale;
+			float outline = _OutlineWidth * _ScaleRatioA * 0.7 * scale;
 
 			float opacity = input.color.a;
 		#if (UNDERLAY_ON | UNDERLAY_INNER)

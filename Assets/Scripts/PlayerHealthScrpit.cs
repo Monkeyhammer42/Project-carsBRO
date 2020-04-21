@@ -29,10 +29,11 @@ public class PlayerHealthScrpit : MonoBehaviour
     public float timex;
     public Text _distanceText;
     public AudioSource _deadSound;
+    private bool isDead;
     void Start()
     {
 
-
+        isDead = false;
         health_Slider.value = healthValue;
         player = GetComponent<Transform>();
 
@@ -66,9 +67,12 @@ public class PlayerHealthScrpit : MonoBehaviour
             health_Slider.value = healthValue;
             if (healthValue == 0)
             {
-            _deadSound.Play();
-            StartCoroutine(Dead());
-          //  Instantiate(_taxiPeices[(0- _taxiPeices.Length)], player);
+                if (!isDead)
+                {
+
+                    StartCoroutine(Dead());
+                isDead = true;
+                }
             }
         
     }
@@ -79,14 +83,17 @@ public class PlayerHealthScrpit : MonoBehaviour
     public IEnumerator Dead()
     {
         GetComponent<MainMovementScript>().StopAmbientSound();
+        
         yield return new WaitForSeconds(0.5f);
         _deadTimer.text = time.ToString("0") + "s";
         _deadDist.text = distance.ToString("0.00") + "KM";
         UI_Holder.SetActive(true);
         UiButton.SetActive(false);
         TimeButton.SetActive(false);
+        
 
         Time.timeScale = 0.000001f;
+        _deadSound.Play();
     }
     public void MeasureTime()
     {

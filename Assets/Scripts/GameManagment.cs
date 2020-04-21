@@ -21,6 +21,7 @@ public class GameManagment : MonoBehaviour
     public GameObject BigGreen;
     public GameObject menubutton;
     public AudioSource _slowTimeSound;
+    public GameObject _QuitButton;
     private void Awake()
     {
 
@@ -44,11 +45,11 @@ public class GameManagment : MonoBehaviour
             {
                 
                 Time.timeScale = 0.5f;
+             
+                StartCoroutine(SlowTimeNow());
+                _slowTimeSound.Play();
                 TurnOffGreen();
                 TurnOffBigGReen();
-                StartCoroutine(SlowTimeNow());
-
-                
 
             }
         }
@@ -134,21 +135,23 @@ public class GameManagment : MonoBehaviour
         Time.timeScale = 1f;
         
         _timeSlowed = true;
-        
-        
-            
-        
+
+         Blocker();
+
+    }
+    public void Blocker()
+    {
         StartCoroutine(SlowTimeTimer());
-
-
     }
     public IEnumerator SlowTimeTimer()
     {
+        
         yield return new WaitForSeconds(10);
         
-            _timeSlowed = false;
+           
+        _QuitButton.SetActive(false);
         UION();
-
+        _timeSlowed = false;
 
     }
     public void Timer()
@@ -190,6 +193,7 @@ public class GameManagment : MonoBehaviour
         GreenReady.SetActive(false);
         RedNotReady.SetActive(true);
         menubutton.SetActive(false);
+        _QuitButton.SetActive(true);
     }
     public void TurnOffBigGReen()
     {
@@ -200,6 +204,7 @@ public class GameManagment : MonoBehaviour
         menubutton.SetActive(true);
         RedNotReady.SetActive(false);
         GreenReady.SetActive(true);
+        
         BigGreen.SetActive(true);
     }
     public void SlowTimeSound()
