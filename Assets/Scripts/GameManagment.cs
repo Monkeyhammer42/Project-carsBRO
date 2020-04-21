@@ -20,6 +20,7 @@ public class GameManagment : MonoBehaviour
     public Slider TimeDilation;
     public GameObject BigGreen;
     public GameObject menubutton;
+    public AudioSource _slowTimeSound;
     private void Awake()
     {
 
@@ -36,6 +37,20 @@ public class GameManagment : MonoBehaviour
         if (_timeSlowed)
         {
             Timer();
+        }
+        if (Input.GetKeyDown(KeyCode.Space) || (Input.GetKeyDown(KeyCode.Keypad0)))
+        {
+            if (!_timeSlowed)
+            {
+                
+                Time.timeScale = 0.5f;
+                TurnOffGreen();
+                TurnOffBigGReen();
+                StartCoroutine(SlowTimeNow());
+
+                
+
+            }
         }
     }
 
@@ -85,17 +100,18 @@ public class GameManagment : MonoBehaviour
     }
     void CreatePowerBoosts(float zPos)
     {
-        AddPowerBoost(new Vector3(_powerUpLanes[Random.Range(0, _powerUpLanes.Length)].transform.position.x, _powerUpLanes[Random.Range(0, _powerUpLanes.Length)].transform.position.y +0.5f, zPos));
+        AddPowerBoost(new Vector3(_powerUpLanes[Random.Range(0, _powerUpLanes.Length)].transform.position.x+10, _powerUpLanes[Random.Range(0, _powerUpLanes.Length)].transform.position.y+5, zPos));
     }
     void CreateTimeBoost(float zPos)
     {
-        AddTimeBoost(new Vector3(_powerUpLanes[Random.Range(0, _powerUpLanes.Length)].transform.position.x, _powerUpLanes[Random.Range(0, _powerUpLanes.Length)].transform.position.y + 0.5f, zPos));
+        AddTimeBoost(new Vector3(_powerUpLanes[Random.Range(0, _powerUpLanes.Length)].transform.position.x, _powerUpLanes[Random.Range(0, _powerUpLanes.Length)].transform.position.y+5, zPos));
     }
     void CreateHealthBoost(float zPos)
     {
-        AddHealthBoost(new Vector3(_powerUpLanes[Random.Range(0, _powerUpLanes.Length)].transform.position.x, _powerUpLanes[Random.Range(0, _powerUpLanes.Length)].transform.position.y + 0.5f, zPos));
+        AddHealthBoost(new Vector3(_powerUpLanes[Random.Range(0, _powerUpLanes.Length)].transform.position.x+10, _powerUpLanes[Random.Range(0, _powerUpLanes.Length)].transform.position.y+5, zPos));
 
     }
+
     public void SlowTime()
     {
         if (!_timeSlowed)
@@ -111,6 +127,7 @@ public class GameManagment : MonoBehaviour
         }
         
     }
+    
     public IEnumerator SlowTimeNow()
     {
         yield return new WaitForSecondsRealtime(7);
@@ -142,9 +159,9 @@ public class GameManagment : MonoBehaviour
 
             Uitext.text = timer.ToString("0") + "s";
             TimeDilation.value = timer;
-            
+
         }
-        
+
         else
         {
             timer = 10;
@@ -156,13 +173,13 @@ public class GameManagment : MonoBehaviour
     }
     public IEnumerator SpawnPowerUps()
     {
-        yield return new WaitForSecondsRealtime(7.5f);
-        float temp = Random.Range(0, 2);
+        yield return new WaitForSecondsRealtime(5);
+        float temp = Random.Range(0, 3);
         if (temp == 0)
         {
             SpawnHealth();
         }
-        if (temp == 1)
+        if (temp == 1||temp==2)
         {
             SpawnBoost();
         }
@@ -184,6 +201,10 @@ public class GameManagment : MonoBehaviour
         RedNotReady.SetActive(false);
         GreenReady.SetActive(true);
         BigGreen.SetActive(true);
+    }
+    public void SlowTimeSound()
+    {
+        _slowTimeSound.Play();
     }
 }
 

@@ -14,6 +14,10 @@ public class MainMovementScript : MonoBehaviour
     public bool _playerBoost;
     public Transform _startPoint;
     public bool _gameStarted;
+    public AudioSource _boostSound;
+    public AudioSource _ambientSound;
+    
+
   
 
     void Start()
@@ -25,7 +29,7 @@ public class MainMovementScript : MonoBehaviour
     void Update()
     {
         if (_gameStarted) {
-           
+            
             Move();
             MovementBounds();
             ChangeRotation();
@@ -37,55 +41,52 @@ public class MainMovementScript : MonoBehaviour
 
     void Move()
     {
-        if (Input.GetKey(KeyCode.L))
-        {
-            PlayerBoost();
-        }
+        
         if (!_playerBoost)
         {
             myBody.velocity = new Vector3(myBody.velocity.x, myBody.velocity.y, 100f);
            
         }
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || (Input.GetKey(KeyCode.UpArrow)))
         {
             moveUp = true;
             myBody.velocity = new Vector3(myBody.velocity.x, _upForce, myBody.velocity.z);
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) || (Input.GetKey(KeyCode.DownArrow)))
         {
             moveDown = true;
             myBody.velocity = new Vector3(myBody.velocity.x, -_downForce, myBody.velocity.z);
         }
-        if (Input.GetKeyUp(KeyCode.W))
+        if (Input.GetKeyUp(KeyCode.W) || (Input.GetKeyUp(KeyCode.UpArrow)))
         {
             myBody.velocity = new Vector3(0, 0, myBody.velocity.z);
             moveUp = false;
 
         }
-        if (Input.GetKeyUp(KeyCode.S))
+        if (Input.GetKeyUp(KeyCode.S) || (Input.GetKeyUp(KeyCode.DownArrow)))
         {
             myBody.velocity = new Vector3(0, 0, myBody.velocity.z);
             moveDown = false;
 
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || (Input.GetKey(KeyCode.LeftArrow)))
         {
             myBody.velocity = new Vector3(-_leftForce, myBody.velocity.y, myBody.velocity.z);
             moveLeft = true;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) || (Input.GetKey(KeyCode.RightArrow)))
         {
             myBody.velocity = new Vector3(_rightForce, myBody.velocity.y, myBody.velocity.z);
             moveRight = true;
         }
        
-        if (Input.GetKeyUp(KeyCode.A))
+        if (Input.GetKeyUp(KeyCode.A) || (Input.GetKeyUp(KeyCode.LeftArrow)))
         {
             myBody.velocity = new Vector3(0, 0, myBody.velocity.z);
             moveLeft = false;
         }
-        if (Input.GetKeyUp(KeyCode.D))
+        if (Input.GetKeyUp(KeyCode.D) || (Input.GetKeyUp(KeyCode.RightArrow)))
         {
             myBody.velocity = new Vector3(0, 0, myBody.velocity.z);
             moveRight = false;
@@ -143,13 +144,15 @@ public class MainMovementScript : MonoBehaviour
     }
     public void PlayerBoost()
     {
+        
         _playerBoost = true;
+        _boostSound.Play();
         myBody.velocity = new Vector3(myBody.velocity.x, myBody.velocity.y, 200f);
         StartCoroutine(StopPlayerBoost());
     }
     public IEnumerator StopPlayerBoost()
     {
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(4f);
         myBody.velocity = new Vector3(myBody.velocity.x, myBody.velocity.y, 100f);
         _playerBoost = false;
 
@@ -158,8 +161,12 @@ public class MainMovementScript : MonoBehaviour
     {
         myBody.position = new Vector3(_startPoint.position.x, _startPoint.position.y, _startPoint.position.z);
         _gameStarted = true;
-
+        _ambientSound.Play();
 
     }
-    
+public void StopAmbientSound()
+    {
+        _ambientSound.Stop();
+    }
+
 }

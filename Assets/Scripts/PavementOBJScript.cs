@@ -7,6 +7,7 @@ public class PavementOBJScript : MonoBehaviour
     public int _individualDmage;
     public ParticleSystem ExplosionFX;
     public Transform EXP;
+    public AudioSource ExplosionSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +25,7 @@ public class PavementOBJScript : MonoBehaviour
         if (target.gameObject.tag == "Player")
         {
             target.GetComponent<PlayerHealthScrpit>().ApplyDamage(_individualDmage);
-
+            ExplosionSound.Play();
            ExplosionFX.Play();
             StartCoroutine(DeactivateTime());
 

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class HealthPowerUp : MonoBehaviour
 {
     public GameObject _healthText;
+    public AudioSource _healthSound;
 
 
     private void Start()
@@ -15,7 +16,9 @@ public class HealthPowerUp : MonoBehaviour
     {
         if (target.gameObject.tag == "Player")
         {
+            _healthSound.Play();
             target.gameObject.GetComponent<PlayerHealthScrpit>().ApplyDamage(-50);
+            
             _healthText.gameObject.SetActive(true);
             StartCoroutine(WaitAndDelete());
 

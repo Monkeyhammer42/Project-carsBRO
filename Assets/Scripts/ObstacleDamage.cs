@@ -15,6 +15,7 @@ public class ObstacleDamage : MonoBehaviour
     public ParticleSystem ExplosionFX;
     public Transform EXP;
     private bool hasDamaged;
+    public AudioSource ExplosionSound;
     void Start()
     {
         myBody = GetComponent<Rigidbody>();
@@ -36,10 +37,12 @@ public class ObstacleDamage : MonoBehaviour
         {
             if (target.gameObject.tag == "Player")
             {
+                ExplosionSound.Play();
                 target.GetComponent<PlayerHealthScrpit>().ApplyDamage(_individualDmage);
                 hasDamaged=true;
-                ExplosionFX.Play();
                 
+                ExplosionFX.Play();
+
                 DeactivateTime();
             }
         }
@@ -138,7 +141,7 @@ public class ObstacleDamage : MonoBehaviour
     }
     IEnumerator DeactivateTime()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.75f);
         
         Destroy(this.gameObject);
     }

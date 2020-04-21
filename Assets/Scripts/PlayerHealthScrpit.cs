@@ -28,6 +28,7 @@ public class PlayerHealthScrpit : MonoBehaviour
     public float distance;
     public float timex;
     public Text _distanceText;
+    public AudioSource _deadSound;
     void Start()
     {
 
@@ -65,13 +66,19 @@ public class PlayerHealthScrpit : MonoBehaviour
             health_Slider.value = healthValue;
             if (healthValue == 0)
             {
+            _deadSound.Play();
             StartCoroutine(Dead());
           //  Instantiate(_taxiPeices[(0- _taxiPeices.Length)], player);
             }
         
     }
+    public void AddHealthText(int HealthAmount)
+    {
+
+    }
     public IEnumerator Dead()
     {
+        GetComponent<MainMovementScript>().StopAmbientSound();
         yield return new WaitForSeconds(0.5f);
         _deadTimer.text = time.ToString("0") + "s";
         _deadDist.text = distance.ToString("0.00") + "KM";
