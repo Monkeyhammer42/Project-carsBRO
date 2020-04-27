@@ -4626,7 +4626,7 @@ RectTransform:
   m_Children:
   - {fileID: 1011127454}
   m_Father: {fileID: 1940725832}
-  m_RootOrder: 23
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -8495,6 +8495,16 @@ PrefabInstance:
       propertyPath: m_enableAutoSizing
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114509960655932080, guid: fde6b1169b14c6945b44a7065488458d,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 114509960655932080, guid: fde6b1169b14c6945b44a7065488458d,
+        type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fde6b1169b14c6945b44a7065488458d, type: 3}
 --- !u!1 &1640351918
@@ -11108,7 +11118,7 @@ PrefabInstance:
     - target: {fileID: 1058802545844679880, guid: 87fac12a2a1defe479ea1960c3ca2548,
         type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 5786432677178526880, guid: 87fac12a2a1defe479ea1960c3ca2548,
         type: 3}
@@ -11144,6 +11154,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 6786226696388803576, guid: 87fac12a2a1defe479ea1960c3ca2548,
+        type: 3}
+      propertyPath: m_PixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6675386388583122086, guid: 87fac12a2a1defe479ea1960c3ca2548,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87fac12a2a1defe479ea1960c3ca2548, type: 3}
